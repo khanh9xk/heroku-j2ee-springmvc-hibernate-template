@@ -196,6 +196,11 @@
 	<script>
 		$(document).ready(function(){
 		$("#type").val("${product.typeId}").change();
+		$('#type').on('change', function (e) {
+		    var optionSelected = $("option:selected", this);
+		    var valueSelected = this.value;
+			window.location.href = "${pageContext.request.contextPath}/product/${product.id}/"+ valueSelected;
+		});
 // 		  $(".save-btn").click(function(e){
 // 			  e.preventDefault();
 // 			  var data = {
