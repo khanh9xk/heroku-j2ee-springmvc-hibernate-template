@@ -25,13 +25,6 @@ public class ProductDao {
 			Category category = entityManager.find(Category.class, p.getCategoryId());
 			p.setCategory(category.getName());
 		}
-		List<Image> imageList = entityManager.createQuery("select c from Image c where c.productId = :productId")
-			.setParameter("productId", p.getId())
-			.getResultList();
-
-		if(imageList.size() > 0){
-			p.setImage(imageList.get(0).getLink());
-		}
 
 		List<ProductType> productTypeList = entityManager.createQuery("select c from ProductType c where c.productId = :productId")
 			.setParameter("productId", p.getId())
@@ -40,6 +33,15 @@ public class ProductDao {
 		if (productTypeList.size() > 0){
 			p.setPrice(productTypeList.get(0).getPrice());
 			p.setType(productTypeList.get(0).getProductTypeName());
+			p.setStock(productTypeList.get(0).getStock());
+			
+			List<Image> imageListType = entityManager.createQuery("select c from Image c where c.productTypeId = :productTypeId")
+				.setParameter("productTypeId", productTypeList.get(0).getId())
+				.getResultList();
+								      
+			if(imageListType.size() > 0){
+				p.setImage(imageList.get(0).getLink());
+			}
 		} else {
 			p.setPrice(BigDecimal.ZERO);
 			p.setType("NAN");
