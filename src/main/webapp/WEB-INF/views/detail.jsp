@@ -56,10 +56,9 @@
                               <label class="control-label"><span>Color</span></label>
                               <div class="controls">
                                  <select class="span11">
-                                    <option>Red</option>
-                                    <option>Purple</option>
-                                    <option>Pink</option>
-                                    <option>Red</option>
+                                    <c:forEach items="${productType}" var="v_type">
+														<option value="${v_type.id}">${v_type.productTypeName}</option>
+												</c:forEach>
                                  </select>
                               </div>
                            </div>
