@@ -34,6 +34,7 @@ public class ProductDao {
 			p.setPrice(productTypeList.get(0).getPrice());
 			p.setType(productTypeList.get(0).getProductTypeName());
 			p.setStock(productTypeList.get(0).getStock());
+			p.setTypeId(productTypeList.get(0).getId());
 			
 			List<Image> imageList = entityManager.createQuery("select c from Image c where c.productTypeId = :productTypeId")
 				.setParameter("productTypeId", productTypeList.get(0).getId())
