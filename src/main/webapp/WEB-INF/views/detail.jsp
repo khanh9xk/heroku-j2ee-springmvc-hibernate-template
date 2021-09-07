@@ -200,7 +200,7 @@
 			    var optionSelected = $("option:selected", this);
 			    var valueSelected = this.value;
 			    var typeList = ${productType};
-				alert(typeList[0]);
+				console.log(typeList[0]);
 			});
 		  $(".save-btn").click(function(e){
 			  e.preventDefault();
