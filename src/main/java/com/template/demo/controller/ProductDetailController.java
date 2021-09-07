@@ -47,5 +47,31 @@ public class ProductDetailController extends BaseController implements Serializa
 		
 		return "detail";
 	}
+	
+	/**
+	 * Selects the home page and populates the model with a message
+	 */
+	@RequestMapping(value = "/product/{id}/{typeId}", method = RequestMethod.GET)
+	public String homeDetail(Model model, @PathVariable Integer id, @PathVariable Integer typeId) {
+		logger.info("product!");
+		Product product = productDao.find(id);
+		ProductType prdType = productDao.findType(typeId);
+		
+		product.setPrice(prdType.getPrice());
+		product.setType(prdType.getProductTypeName());
+		product.setStock(prdType.getStock());
+		product.setTypeId(prdType.getId());
+		product.setImage(prdType.getImage());
+		
+		model.addAttribute("product", product);
+		
+		List<ProductType> productType = productDao.getAllType(id);
+		model.addAttribute("productType", productType);
+		
+		List<Category> categoryList = categoryDao.getCategories();
+		model.addAttribute("categoryList", categoryList);
+		
+		return "detail";
+	}
 
 }
