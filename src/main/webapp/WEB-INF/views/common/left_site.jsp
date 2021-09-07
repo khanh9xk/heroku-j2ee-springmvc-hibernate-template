@@ -1,10 +1,11 @@
 <div class="well well-small">
-   <ul class="nav nav-list">
+   <ul class="nav nav-list menu-left">
       <c:forEach items="${categoryList}" var="v_cate">
-         <li><a href="edit?id=${v_person.id}"><span class="icon-chevron-right"></span>${v_cate.name}</a></li>
+         <li><a href="${pageContext.request.contextPath}/?categoryId=${v_cate.id}"><span class="icon-chevron-right"></span>${v_cate.name}</a></li>
       </c:forEach>
    </ul>
 </div>
+
 <!-- <div class="well well-small alert alert-warning cntr">
    <h2>50% Discount</h2>
    <p>

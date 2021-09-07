@@ -33,10 +33,29 @@ public class Product extends BaseEntity implements Serializable {
 	
 	@Transient
 	private String brand;
+	
 	@Transient
 	private String category;
+	
 	@Transient
 	private String image;
+	
+	@Transient
+	private BigDecimal price;
+	
+	@Transient
+	private String type;
+	
+	@Transient
+	private Integer stock;
+	
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
 	
 	public String getImage() {
 		return image;
@@ -44,6 +63,14 @@ public class Product extends BaseEntity implements Serializable {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 	public String getCategory() {
@@ -100,5 +127,13 @@ public class Product extends BaseEntity implements Serializable {
 
 	public void setBrandId(Integer brandId) {
 		this.brandId = brandId;
+	}
+	
+	public Integer getStock() {
+		return stock;
+	}
+
+	public void setStock(Integer stock) {
+		this.stock = stock;
 	}
 }

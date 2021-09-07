@@ -1,5 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <html>
    <head>
       <meta charset="utf-8">
@@ -14,6 +17,51 @@
       <!-- font awesome styles -->
       <link href="${pageContext.request.contextPath}/resources/font-awesome/css/font-awesome.css" rel="stylesheet">
       <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/ico/favicon.ico">
+      <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+      <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+      <script src="${pageContext.request.contextPath}/resources/js/jquery.easing-1.3.min.js"></script>
+      <script src="${pageContext.request.contextPath}/resources/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+      <script src="${pageContext.request.contextPath}/resources/js/shop.js"></script>
+      <script>
+         $(document).ready(function(){
+         var categoryId = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&')[0];
+         $( ".menu-left li a" ).each(function( index ) {
+            if($( this ).attr('href') === '?' + categoryId){
+               $( this ).parent().attr('class', 'active');
+            }
+         });
+
+      // 			  $(".save-btn").click(function(e){
+      // 				e.preventDefault();
+      // 				  var data = {
+      // 					    id: $('#product-id').val(),
+      // 					    name: $('#product-name').val(),
+      // 					    image: $('#product-image').val(),
+      // 					    categoryId: $('#category').find('option:selected').val(),
+      // 					    brandId: $('#brand').find('option:selected').val(),
+      // 					    description: CKEDITOR.instances.desc.getData().replace(/\s+/g, ' ').trim(),
+      // 					}  
+      // 				  $.ajax({
+      // 					     type: "PUT",
+      // 					     url: "${pageContext.request.contextPath}/admin/api/product",
+      // 					     headers: { 
+      // 						'Accept': 'application/json',
+      // 						'Content-Type': 'application/json' 
+      // 					     },
+      // 					     dataType: "script",
+      // 					     data: JSON.stringify(data),
+      // 					     success: function (data, status) {
+      // 						  location.href = "${pageContext.request.contextPath}/admin/product";
+      // 					     },
+      // 					     error: function (status) {
+      // 						 // error handler
+      // 						 console.log(status);
+      // 					     }
+      // 				  });
+      // 			  });
+
+         });		    
+      </script>
    </head>
    <body>
       <div class="container">
@@ -74,121 +122,95 @@
                   <div class="row-fluid">
                      <div id="newProductCar" class="carousel slide">
                         <div class="carousel-inner">
-                           <div class="item active">
-                              <ul class="thumbnails">
-                                 <li class="span3">
-                                    <div class="thumbnail">
-                                       <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                       <a href="#" class="tag"></a>
-                                       <a href="product_details.html"><img src="${pageContext.request.contextPath}/resources/img/bootstrap-ring.png" alt="bootstrap-ring"></a>
-                                    </div>
-                                 </li>
-                                 <li class="span3">
-                                    <div class="thumbnail">
-                                       <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                       <a href="#" class="tag"></a>
-                                       <a  href="product_details.html"><img src="${pageContext.request.contextPath}/resources/img/i.jpg" alt=""></a>
-                                    </div>
-                                 </li>
-                                 <li class="span3">
-                                    <div class="thumbnail">
-                                       <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                       <a href="#" class="tag"></a>
-                                       <a  href="product_details.html"><img src="${pageContext.request.contextPath}/resources/img/g.jpg" alt=""></a>
-                                    </div>
-                                 </li>
-                                 <li class="span3">
-                                    <div class="thumbnail">
-                                       <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                       <a  href="product_details.html"><img src="${pageContext.request.contextPath}/resources/img/s.png" alt=""></a>
-                                    </div>
-                                 </li>
-                              </ul>
-                           </div>
-                           <div class="item">
-                              <ul class="thumbnails">
-                                 <li class="span3">
-                                    <div class="thumbnail">
-                                       <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                       <a  href="product_details.html"><img src="${pageContext.request.contextPath}/resources/img/i.jpg" alt=""></a>
-                                    </div>
-                                 </li>
-                                 <li class="span3">
-                                    <div class="thumbnail">
-                                       <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                       <a  href="product_details.html"><img src="${pageContext.request.contextPath}/resources/img/f.jpg" alt=""></a>
-                                    </div>
-                                 </li>
-                                 <li class="span3">
-                                    <div class="thumbnail">
-                                       <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                       <a  href="product_details.html"><img src="${pageContext.request.contextPath}/resources/img/h.jpg" alt=""></a>
-                                    </div>
-                                 </li>
-                                 <li class="span3">
-                                    <div class="thumbnail">
-                                       <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                                       <a  href="product_details.html"><img src="${pageContext.request.contextPath}/resources/img/j.jpg" alt=""></a>
-                                    </div>
-                                 </li>
-                              </ul>
-                           </div>
+                           <c:choose>
+                                <c:when test="${not empty productIcons1}">
+                                  <div class="item active">
+                                    <ul class="thumbnails">
+                                       <c:forEach items="${productIcons1}" var="v_pro">
+                                           <li class="span3">
+                                             <div class="thumbnail">
+                                                <a class="zoomTool" href="${pageContext.request.contextPath}/product/${v_pro.id}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                                                <a href="#" class="tag"></a>
+                                                <a href="${pageContext.request.contextPath}/product/${v_pro.id}" style="height: 130px; display: flex;" >
+                                                   <img src="${v_pro.image}" alt="bootstrap-ring">
+                                                </a>
+                                             </div>
+                                          </li>
+                                       </c:forEach>
+                                    </ul>
+                                 </div>
+                                </c:when>
+                           </c:choose>
+                           
+                           <c:choose>
+                                <c:when test="${not empty productIcons2}">
+                                  <div class="item">
+                                    <ul class="thumbnails">
+                                       <c:forEach items="${productIcons2}" var="v_pro">
+                                           <li class="span3">
+                                             <div class="thumbnail">
+                                                <a class="zoomTool" href="${pageContext.request.contextPath}/product/${v_pro.id}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                                                <a href="#" class="tag"></a>
+                                                <a href="${pageContext.request.contextPath}/product/${v_pro.id}" style="height: 130px; display: flex;" >
+                                                   <img src="${v_pro.image}" alt="bootstrap-ring">
+                                                </a>
+                                             </div>
+                                          </li>
+                                       </c:forEach>
+                                    </ul>
+                                 </div>
+                                </c:when>
+                           </c:choose>
+                           
+                           <c:choose>
+                                <c:when test="${not empty productIcons3}">
+                                  <div class="item">
+                                    <ul class="thumbnails">
+                                       <c:forEach items="${productIcons3}" var="v_pro">
+                                           <li class="span3">
+                                             <div class="thumbnail">
+                                                <a class="zoomTool" href="${pageContext.request.contextPath}/product/${v_pro.id}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                                                <a href="#" class="tag"></a>
+                                                <a href="${pageContext.request.contextPath}/product/${v_pro.id}" style="height: 130px; display: flex;" >
+                                                   <img src="${v_pro.image}" alt="bootstrap-ring">
+                                                </a>
+                                             </div>
+                                          </li>
+                                       </c:forEach>
+                                    </ul>
+                                 </div>
+                                </c:when>
+                           </c:choose>
+                          
                         </div>
                         <a class="left carousel-control" href="#newProductCar" data-slide="prev">&lsaquo;</a>
                         <a class="right carousel-control" href="#newProductCar" data-slide="next">&rsaquo;</a>
                      </div>
                   </div>
                   <div class="row-fluid">
-                     <ul class="thumbnails">
-                        <li class="span4">
-                           <div class="thumbnail">
-                              <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                              <a href="product_details.html"><img src="${pageContext.request.contextPath}/resources/img/b.jpg" alt=""></a>
-                              <div class="caption cntr">
-                                 <p>Manicure & Pedicure</p>
-                                 <p><strong> $22.00</strong></p>
-                                 <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-                                 <div class="actionList">
-                                    <a class="pull-left" href="#">Add to Wish List </a>
-                                    <a class="pull-left" href="#"> Add to Compare </a>
-                                 </div>
-                                 <br class="clr">
-                              </div>
-                           </div>
-                        </li>
-                        <li class="span4">
-                           <div class="thumbnail">
-                              <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                              <a href="product_details.html"><img src="${pageContext.request.contextPath}/resources/img/c.jpg" alt=""></a>
-                              <div class="caption cntr">
-                                 <p>Manicure & Pedicure</p>
-                                 <p><strong> $22.00</strong></p>
-                                 <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-                                 <div class="actionList">
-                                    <a class="pull-left" href="#">Add to Wish List </a>
-                                    <a class="pull-left" href="#"> Add to Compare </a>
-                                 </div>
-                                 <br class="clr">
-                              </div>
-                           </div>
-                        </li>
-                        <li class="span4">
-                           <div class="thumbnail">
-                              <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                              <a href="product_details.html"><img src="${pageContext.request.contextPath}/resources/img/a.jpg" alt=""></a>
-                              <div class="caption cntr">
-                                 <p>Manicure & Pedicure</p>
-                                 <p><strong> $22.00</strong></p>
-                                 <h4><a class="shopBtn" href="#" title="add to cart"> Add to cart </a></h4>
-                                 <div class="actionList">
-                                    <a class="pull-left" href="#">Add to Wish List </a>
-                                    <a class="pull-left" href="#"> Add to Compare </a>
-                                 </div>
-                                 <br class="clr">
-                              </div>
-                           </div>
-                        </li>
-                     </ul>
+                     <c:choose>
+                          <c:when test="${not empty productNewTop12}">
+                             <ul class="thumbnails">
+                                 <c:forEach items="${productNewTop12}" var="v_pro">
+                                    <li class="span4">
+                                       <div class="thumbnail">
+                                          <a class="zoomTool" href="${pageContext.request.contextPath}/product/${v_pro.id}" title="Thêm vào giỏ hàng"><span class="icon-search"></span>XEM NHANH</a>
+                                          <a href="${pageContext.request.contextPath}/product/${v_pro.id}" style="height: 200px; display: flex;">
+                                             <img src="${v_pro.image}" alt="${v_pro.name}">
+                                          </a>
+                                          <div class="caption cntr" stype="height: 100px;">
+                                             <p>${v_pro.brand}</p>
+                                             <p>${v_pro.category}</p>
+                                             <p><strong><fmt:formatNumber type = "number" pattern = "#,### VNĐ" value = "${v_pro.price}" /></strong></p>
+                                             <h4><a class="shopBtn" href="#" title="add to cart"> Thêm vào giỏ hàng </a></h4>
+                                          </div>
+                                       </div>
+                                    </li>
+                                 </c:forEach>
+                              </ul>
+                          </c:when>
+                     </c:choose>
+                     
                   </div>
                </div>
                <!--
@@ -337,10 +359,6 @@
       </div>
       <a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
       <!-- Placed at the end of the document so the pages load faster -->
-      <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
-      <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-      <script src="${pageContext.request.contextPath}/resources/js/jquery.easing-1.3.min.js"></script>
-      <script src="${pageContext.request.contextPath}/resources/js/jquery.scrollTo-1.4.3.1-min.js"></script>
-      <script src="${pageContext.request.contextPath}/resources/js/shop.js"></script>
+      
    </body>
 </html>

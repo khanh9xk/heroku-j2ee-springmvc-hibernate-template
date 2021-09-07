@@ -84,10 +84,10 @@
 										<div class="col-sm-12">
 											<div class="form-group">
 												<label>Mô tả</label>
-												<textarea class="form-control" rows="4" cols="50" id="desc" name="desc"></textarea>
+												<textarea class="form-control" rows="10" cols="50" id="desc" name="desc"></textarea>
 												<script>
 													CKEDITOR.addCss('.cke_editable p { margin: 0 !important; }');
-													CKEDITOR.replace( 'desc' );
+													CKEDITOR.replace( 'desc');
 												</script>
 											</div>
 										</div>

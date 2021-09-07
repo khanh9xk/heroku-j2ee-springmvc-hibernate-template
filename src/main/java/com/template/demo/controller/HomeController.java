@@ -1,15 +1,14 @@
 package com.template.demo.controller;
 
-import com.template.demo.model.Category;
-import com.template.demo.dao.CategoryDao;
+import com.template.demo.model.*;
+import com.template.demo.dao.*;
 import java.io.Serializable;
 import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.*;
 /**
  * Sample controller for going to the home page with a message
@@ -24,29 +23,35 @@ public class HomeController extends BaseController implements Serializable {
 	
 	@Autowired
 	private CategoryDao categoryDao;
+	
+	@Autowired
+	private ProductDao productDao;
 
 	/**
 	 * Selects the home page and populates the model with a message
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model) {
+	public String home(Model model, 
+			   @RequestParam(defaultValue = "-1") Integer categoryId, 
+			   @RequestParam(defaultValue = "") String name,
+			   @RequestParam(defaultValue = "-1") Integer brandId
+			   ) {
 		logger.info("Welcome home!");
+		
 		List<Category> categoryList = categoryDao.getCategories();
-		for (Category category : categoryList) {
-			logger.info(category.getName());
-		}
 		model.addAttribute("categoryList", categoryList);
-		return "home";
-	}
-	
-	@RequestMapping(value = "/fake/cate", method = RequestMethod.GET)
-	public String fakeCate(Model model) {
-		categoryDao.save(new Category(1, "Bánh ngọt"));
-		categoryDao.save(new Category(2, "Đồ gia dụng"));
-		categoryDao.save(new Category(3, "Quần áo"));
-		categoryDao.save(new Category(4, "Chợ"));
-		return "home";
-	}
-	
+		
 
+		List<Product> productIcons1 = productDao.getList(name,categoryId, brandId, 0, 4);
+		List<Product> productIcons2 = productDao.getList(name,categoryId, brandId, 4, 4);
+		List<Product> productIcons3 = productDao.getList(name,categoryId, brandId, 8, 4);
+		model.addAttribute("productIcons1", productIcons1);
+		model.addAttribute("productIcons2", productIcons2);
+		model.addAttribute("productIcons3", productIcons3);
+		
+		List<Product> productNewTop12 = productDao.getList(name,categoryId, brandId, 0, 12);
+		model.addAttribute("productNewTop12", productNewTop12);
+		
+		return "home";
+	}
 }
