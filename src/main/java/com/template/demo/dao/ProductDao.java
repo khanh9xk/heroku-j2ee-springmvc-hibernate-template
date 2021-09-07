@@ -35,11 +35,11 @@ public class ProductDao {
 			p.setType(productTypeList.get(0).getProductTypeName());
 			p.setStock(productTypeList.get(0).getStock());
 			
-			List<Image> imageListType = entityManager.createQuery("select c from Image c where c.productTypeId = :productTypeId")
+			List<Image> imageList = entityManager.createQuery("select c from Image c where c.productTypeId = :productTypeId")
 				.setParameter("productTypeId", productTypeList.get(0).getId())
 				.getResultList();
 								      
-			if(imageListType.size() > 0){
+			if(imageList.size() > 0){
 				p.setImage(imageList.get(0).getLink());
 			}
 		} else {
