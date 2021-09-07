@@ -49,7 +49,7 @@
                            <div class="control-group">
                               <label class="control-label"><span><fmt:formatNumber type = "number" pattern = "#,### VNĐ" value = "${product.price}" /></span></label>
                               <div class="controls" style="width: 100%;">
-                                 <input type="number" class="span6" placeholder="Qty.">
+                                 <input type="number" class="span6" placeholder="Số lượng mua" max="${product.stock}">
                               </div>
                            </div>
                            <div class="control-group">
