@@ -43,13 +43,13 @@
                         </div>
                      </div>
                      <div class="span7">
-                        <h3>${product.name} [${product.type}]</h3>
+			     <h3>${product.name} [<span id="type-name">${product.type}</span>]</h3>
                         <hr class="soft"/>
                         <form class="form-horizontal qtyFrm">
                            <div class="control-group">
-                              <label class="control-label"><span><fmt:formatNumber type = "number" pattern = "#,### VNĐ" value = "${product.price}" /></span></label>
+                              <label class="control-label"><span id="type-price"><fmt:formatNumber type = "number" pattern = "#,### VNĐ" value = "${product.price}" /></span></label>
                               <div class="controls" style="width: 100%;">
-                                 <input type="number" class="span6" placeholder="Số lượng mua" max="${product.stock}">
+                                 <input id="quantity" type="number" class="span6" placeholder="Số lượng mua" max="${product.stock}">
                               </div>
                            </div>
                            <div class="control-group">
@@ -77,7 +77,7 @@
                            <div class="control-group">
                               <label class="control-label"><span>Số lượng còn lại</span></label>
                               <div class="controls" style="width: 100%;">
-                                 <input type="number" class="span6" value="${product.stock}" readonly >
+                                 <input id="type-stock" type="number" class="span6" value="${product.stock}" readonly >
                               </div>
                            </div>
                            <button type="submit" class="shopBtn" style="width: 371px;"><span class=" icon-shopping-cart"></span> Thêm vào giỏ hàng</button>
@@ -195,7 +195,13 @@
       <script src="${pageContext.request.contextPath}/resources/js/shop.js"></script>
 	<script>
 		$(document).ready(function(){
-		  $("#type").val("${product.typeId}").change();	
+			$("#type").val("${product.typeId}").change();
+			$('#type').on('change', function (e) {
+			    var optionSelected = $("option:selected", this);
+			    var valueSelected = this.value;
+			    var typeList = ${productType};
+				alert(typeList[0]);
+			});
 		  $(".save-btn").click(function(e){
 			  e.preventDefault();
 			  var data = {
