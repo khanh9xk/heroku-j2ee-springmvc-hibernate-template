@@ -24,9 +24,9 @@
       <script src="${pageContext.request.contextPath}/resources/js/shop.js"></script>
       <script>
          $(document).ready(function(){
-         var categoryId = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&')[0];
+         var urlParams = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&')[0];
          $( ".menu-left li a" ).each(function( index ) {
-            if($( this ).attr('href') === '?' + categoryId){
+            if(urlParams.includes($( this ).attr('href').replace('/?',''))){
                $( this ).parent().attr('class', 'active');
             }
          });
