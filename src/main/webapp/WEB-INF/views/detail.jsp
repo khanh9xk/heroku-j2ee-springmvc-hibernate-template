@@ -195,41 +195,35 @@
       <script src="${pageContext.request.contextPath}/resources/js/shop.js"></script>
 	<script>
 		$(document).ready(function(){
-			$("#type").val("${product.typeId}").change();
-			$('#type').on('change', function (e) {
-			    var optionSelected = $("option:selected", this);
-			    var valueSelected = this.value;
-			    var typeList = ${productType};
-				console.log(typeList[0]);
-			});
-		  $(".save-btn").click(function(e){
-			  e.preventDefault();
-			  var data = {
-				    id: $('#product-id').val(),
-				    name: $('#product-name').val(),
-				    image: $('#product-image').val(),
-				    categoryId: $('#category').find('option:selected').val(),
-				    brandId: $('#brand').find('option:selected').val(),
-				    description: CKEDITOR.instances.desc.getData().replace(/\s+/g, ' ').trim(),
-				}  
-			  $.ajax({
-				     type: "PUT",
-				     url: "${pageContext.request.contextPath}/admin/api/product",
-				     headers: { 
-					'Accept': 'application/json',
-					'Content-Type': 'application/json' 
-				     },
-				     dataType: "script",
-				     data: JSON.stringify(data),
-				     success: function (data, status) {
-					  location.href = "${pageContext.request.contextPath}/admin/product";
-				     },
-				     error: function (status) {
-					 // error handler
-					 console.log(status);
-				     }
-			  });
-		  });
+		$("#type").val("${product.typeId}").change();
+// 		  $(".save-btn").click(function(e){
+// 			  e.preventDefault();
+// 			  var data = {
+// 				    id: $('#product-id').val(),
+// 				    name: $('#product-name').val(),
+// 				    image: $('#product-image').val(),
+// 				    categoryId: $('#category').find('option:selected').val(),
+// 				    brandId: $('#brand').find('option:selected').val(),
+// 				    description: CKEDITOR.instances.desc.getData().replace(/\s+/g, ' ').trim(),
+// 				}  
+// 			  $.ajax({
+// 				     type: "PUT",
+// 				     url: "${pageContext.request.contextPath}/admin/api/product",
+// 				     headers: { 
+// 					'Accept': 'application/json',
+// 					'Content-Type': 'application/json' 
+// 				     },
+// 				     dataType: "script",
+// 				     data: JSON.stringify(data),
+// 				     success: function (data, status) {
+// 					  location.href = "${pageContext.request.contextPath}/admin/product";
+// 				     },
+// 				     error: function (status) {
+// 					 // error handler
+// 					 console.log(status);
+// 				     }
+// 			  });
+// 		  });
 
 		});
 
