@@ -45,6 +45,7 @@ public class BaseController implements Serializable {
 		user.setFirstName("khanh");
 		user.setLastName("nguyen");
 		user.setEmail("khanh@gmail.com");
+		user.setId(1);
 		setVarInSession(httpRequest, "user",  user);
 	}
 	
