@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>nicolatassini</groupId>
-	<artifactId>NT_BackendTemplate</artifactId>
+	<groupId>KhanhPhuong</groupId>
+	<artifactId>KhanhPhuong</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>NT Backend Template</name>
+	<name>KhanhPhuong</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.version>5.2.9.RELEASE</spring.version>
-<!-- 		<spring.version>4.3.3.RELEASE</spring.version> -->
+<!-- 		<spring.version>5.2.9.RELEASE</spring.version> -->
+		<spring.version>4.3.3.RELEASE</spring.version>
 		<slf4j.version>1.7.21</slf4j.version>
 		<java.version>1.8</java.version>
 		<aspectj.version>1.7.3</aspectj.version>
