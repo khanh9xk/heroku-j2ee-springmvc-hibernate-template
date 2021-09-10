@@ -17,16 +17,16 @@ public class Cart extends BaseEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    	private Integer id;
 
 	@Column
-	private Long productTypeId;
+	private Integer productTypeId;
 
 	@Column
-	private Long userId;
+	private Integer userId;
 
 	@Column
-    private Long quantity;
+   	private Integer quantity;
 
 	public Integer getId() {
 		return id;
@@ -36,27 +36,27 @@ public class Cart extends BaseEntity implements Serializable {
 		this.id = id;
 	}
 
-	public Long getProductTypeId() {
+	public Integer getProductTypeId() {
 		return productTypeId;
 	}
 
-	public void setProductTypeId(Long productTypeId) {
+	public void setProductTypeId(Integer productTypeId) {
 		this.productTypeId = productTypeId;
 	}
 
-	public Long getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 
-	public Long getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(Long quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 }
