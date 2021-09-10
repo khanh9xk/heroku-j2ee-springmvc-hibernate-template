@@ -30,9 +30,39 @@ public class CartDao {
 	
 	@SuppressWarnings("unchecked")
 	public List<Cart> getListByUserId(Integer userId) {
-		return entityManager.createQuery("select c from Cart c where c.userId = :userId order by id desc")
+		List<Cart> cartList = entityManager.createQuery("select c from Cart c where c.userId = :userId order by id desc")
 			.setParameter("userId", userId)
 			.getResultList();
+		
+		for (Cart cart : cartList){
+			ProductType productType = entityManager.find(ProductType.class, cart.getProductTypeId());
+			
+			cart.setPrice(productType.getPrice());
+			cart.setType(productType.getProductTypeName());
+			cart.setStock(productType.getStock());
+			
+			List<Image> imageList = entityManager.createQuery("select c from Image c where c.productTypeId = :productTypeId")
+				.setParameter("productTypeId", cart.getProductTypeId())
+				.getResultList();
+								      
+			if(imageList.size() > 0){
+				cart.setImage(imageList.get(0).getLink());
+			}
+			
+			Product p = entityManager.find(Product.class, productType.getProductId());
+			
+			cart.setProductName(p.getName());
+			if(null != p.getBrandId()){
+				Brand brand = entityManager.find(Brand.class, p.getBrandId());
+				cart.setBrand(brand.getName());
+			}
+			if(null != p.getCategoryId()){
+				Category category = entityManager.find(Category.class, p.getCategoryId());
+				cart.setCategory(category.getName());
+			}
+		}
+		
+		return cartList;
 	}
 	
 	@Transactional
