@@ -1,6 +1,6 @@
 package com.template.demo.dao;
 
-import com.template.demo.model.Cart;
+import com.template.demo.model.*;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
