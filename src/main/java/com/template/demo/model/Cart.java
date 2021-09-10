@@ -46,7 +46,18 @@ public class Cart extends BaseEntity implements Serializable {
 	
 	@Transient
 	private Integer stock;
+	
+	@Transient
+	private String productName;
 
+	
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
 	
 	public BigDecimal getPrice() {
 		return price;
