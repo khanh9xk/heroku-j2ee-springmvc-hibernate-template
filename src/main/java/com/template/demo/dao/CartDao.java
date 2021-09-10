@@ -78,7 +78,7 @@ public class CartDao {
 		}
 		cartAdd.addAll(cartUpdate);
 		for (Cart cart : cartAdd){
-			save(cartAdd);
+			save(cart);
 		}
 	}	
 	
