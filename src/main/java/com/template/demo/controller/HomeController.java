@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.*;
+import javax.servlet.http.HttpServletRequest;
 /**
  * Sample controller for going to the home page with a message
  */
