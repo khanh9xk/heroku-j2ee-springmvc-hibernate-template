@@ -41,8 +41,7 @@
                      <thead>
                         <tr>
                            <th>Sản phẩm</th>
-                           <th>Loại hàng</th>
-                           <th>Nhãn hiệu</th>
+                           <th>Mô tả</th>
                            <th>Số lượng có sẵn</th>
                            <th>Đơn giá</th>
                            <th>Số lượng mua</th>
@@ -50,34 +49,30 @@
                         </tr>
                      </thead>
                      <tbody>
-                        <tr>
-                           <td><img width="100" src="assets/img/e.jpg" alt=""></td>
-                           <td>Items name here<br>Carate : 22<br>Model : n/a</td>
-                           <td> - </td>
-                           <td><span class="shopBtn"><span class="icon-ok"></span></span> </td>
-                           <td>$50.00</td>
-                           <td>
-                              <input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text" value="2">
-                              <div class="input-append">
-                                 <button class="btn btn-mini" type="button">-</button><button class="btn btn-mini" type="button"> + </button><button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></button>
-                              </div>
-                           </td>
-                           <td>$100.00</td>
-                        </tr>
-                        <tr>
-                           <td><img width="100" src="assets/img/f.jpg" alt=""></td>
-                           <td>Item names and brief details<br>Carate:24 <br>Model:HBK24</td>
-                           <td> - </td>
-                           <td><span class="shopBtn"><span class="icon-ok"></span></span> </td>
-                           <td>$348.42</td>
-                           <td>
-                              <input class="span1" style="max-width:34px" placeholder="1" size="16" type="text">
-                              <div class="input-append">
-                                 <button class="btn btn-mini" type="button">-</button><button class="btn btn-mini" type="button">+</button><button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></button>
-                              </div>
-                           </td>
-                           <td>$348.42</td>
-                        </tr>
+                        <c:choose>
+                           <c:when test="${not empty cartList}">
+                              <c:forEach items="${cartList}" var="v_cart">
+                                  <tr>
+                                    <td><img width="100" src="${v_cart.image}" alt="${v_cart.image}"></td>
+                                    <td>${v_cart.productName}<br>Loại : ${v_cart.type}<br>Nhãn hiệu : ${v_cart.brand}</td>
+                                    <td>${v_cart.stock} </td>
+                                    <td>${v_cart.price}</td>
+                                    <td>
+                                       <input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text" value="${v_cart.quantity}">
+                                       <div class="input-append">
+                                          <button class="btn btn-mini" type="button">-</button><button class="btn btn-mini" type="button"> + </button><button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></button>
+                                       </div>
+                                    </td>
+                                    <td>$100.00</td>
+                                 </tr>
+                              </c:forEach>
+                           </c:when>
+                           <c:otherwise>
+                                  Không có sản phẩm trong giỏ hàng
+                           </c:otherwise>
+                        </c:choose>
+                       
+                       
                         <tr>
                            <td colspan="6" class="alignR">Total products:	</td>
                            <td> $448.42</td>
