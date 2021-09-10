@@ -10,7 +10,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+import com.template.demo.model.*;
+import com.template.demo.dao.*;
 
 
 /**
@@ -20,7 +23,8 @@ import org.springframework.ui.Model;
  *
  */
 @Controller
-//@Scope("session")
+@Scope("session")
+@SessionAttributes("user")
 public class BaseController implements Serializable {
 
 	private static final long serialVersionUID = 1324281204513252403L;
@@ -29,12 +33,18 @@ public class BaseController implements Serializable {
 	
 	
 	@ModelAttribute
-	public void addAttributes(Model model) {
+	public void addAttributes(Model model, HttpServletRequest httpRequest) {
 		model.addAttribute("userName", "Khánh");
 		model.addAttribute("titleShop", "Khánh Phương Shop");
 		model.addAttribute("facebookLink", "https://www.facebook.com/khanh9xkk");
 		model.addAttribute("youtubeLink", "https://www.youtube.com/?hl=vi");
 		model.addAttribute("promotion", "Khuyến mãi 50k cho đơn hàng đầu tiên. Mọi người mại dô mại dô :)");
+		
+		User user = new User();
+		user.setFirstName("khanh");
+		user.setLastName("nguyen");
+		user.setEmail("khanh@gmail.com");
+		setVarInSession(httpRequest, "user",  user);
 	}
 	
 	/**
