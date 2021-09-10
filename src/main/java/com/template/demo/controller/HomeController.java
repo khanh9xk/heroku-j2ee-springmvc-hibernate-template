@@ -67,6 +67,7 @@ public class HomeController extends BaseController implements Serializable {
 		logger.info("Cart page!");
 		User sUser = (User) getVarFromSession(httpRequest, "user");
 		List<Cart> cartList = cartDao.getListByUserId(sUser.getId());
+		model.addAttribute("cartList", cartList);
 		return "cart";
 	}
 	
