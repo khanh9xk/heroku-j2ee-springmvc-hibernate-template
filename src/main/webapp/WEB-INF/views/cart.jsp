@@ -2,6 +2,8 @@
 <%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <html>
    <head>
       <meta charset="utf-8">
@@ -29,22 +31,22 @@
          <div class="row">
             <div class="span12">
                <ul class="breadcrumb">
-                  <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-                  <li class="active">Check Out</li>
+                  <li><a href="${pageContext.request.contextPath}/">Trang chủ</a> <span class="divider">/</span></li>
+                  <li class="active">Giỏ hàng</li>
                </ul>
                <div class="well well-small">
-                  <h1>Check Out <small class="pull-right"> 2 Items are in the cart </small></h1>
+                  <h1>Check Out <small class="pull-right"> ${fn:length(cartList)} sản phẩm trong giỏ</small></h1>
                   <hr class="soften"/>
                   <table class="table table-bordered table-condensed">
                      <thead>
                         <tr>
-                           <th>Product</th>
-                           <th>Description</th>
-                           <th>	Ref. </th>
-                           <th>Avail.</th>
-                           <th>Unit price</th>
-                           <th>Qty </th>
-                           <th>Total</th>
+                           <th>Sản phẩm</th>
+                           <th>Loại hàng</th>
+                           <th>Nhãn hiệu</th>
+                           <th>Số lượng có sẵn</th>
+                           <th>Đơn giá</th>
+                           <th>Số lượng mua</th>
+                           <th>Tổng tiền</th>
                         </tr>
                      </thead>
                      <tbody>
