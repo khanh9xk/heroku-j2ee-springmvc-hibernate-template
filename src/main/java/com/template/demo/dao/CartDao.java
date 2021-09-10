@@ -50,7 +50,14 @@ public class CartDao {
 	@Transactional
 	public void save(List<Cart> cartList, Integer userId) {
 		
-		List<Integer> proTypeList = cartList.stream().map(cart -> cart.getProductTypeId()).collect(Collectors.toList());
+		List<Integer> proTypeTraceList = new ArrayList();
+		for (Cart cartNew : cartList){
+			if(proTypeTraceList.contains(cartNew.getProductTypeId())){
+				throw new RuntimeException("[SAVE CART] Có lỗi sảy ra");
+			}
+			proTypeTraceList.add(cartNew.getProductTypeId())
+		}
+		
 		
 		List<Cart> cartAdd = new ArrayList();
 		cartAdd.addAll(cartList);
@@ -58,16 +65,17 @@ public class CartDao {
 		
 		List<Cart> cartOldList = getListByUserId(userId);
 		
-		for (Cart cartOld : cartOldList){
-			for (Cart cartNew : cartList){
-				if(cartOld.getProductTypeId() == cartNew.getProductTypeId()){
-					cartOld.setQuantity(cartNew.getQuantity() + cartOld.getQuantity());
-					cartUpdate.add(cartOld);
-					cartAdd.remove(cartNew);
+		if(!cartOldList.isEmpty()){
+			for (Cart cartOld : cartOldList){
+				for (Cart cartNew : cartList){
+					if(cartOld.getProductTypeId() == cartNew.getProductTypeId()){
+						cartOld.setQuantity(cartNew.getQuantity() + cartOld.getQuantity());
+						cartUpdate.add(cartOld);
+						cartAdd.remove(cartNew);
+					}
 				}
 			}
 		}
-		
 		cartAdd.addAll(cartUpdate);
 		for (Cart cart : cartAdd){
 			save(cartAdd);
