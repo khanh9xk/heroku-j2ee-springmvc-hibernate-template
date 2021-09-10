@@ -26,6 +26,9 @@ public class HomeController extends BaseController implements Serializable {
 	
 	@Autowired
 	private ProductDao productDao;
+	
+	@Autowired
+	private CartDao cartDao;
 
 	/**
 	 * Selects the home page and populates the model with a message
@@ -54,4 +57,29 @@ public class HomeController extends BaseController implements Serializable {
 		
 		return "home";
 	}
+	
+	/**
+	 * Selects the home page and populates the model with a message
+	 */
+	@RequestMapping(value = "/cart", method = RequestMethod.GET)
+	public String home(Model model, HttpServletRequest httpRequest) {
+		logger.info("Cart page!");
+		User sUser = (User) getVarFromSession(httpRequest, "user");
+		List<Cart> cartList = cartDao.getListByUserId(sUser.getId());
+		return "cart";
+	}
+	
+	/**
+	 * Selects the home page and populates the model with a message
+	 */
+	@RequestMapping(value = "/api/cart", method = RequestMethod.PUT, consumes="application/json", produces = "application/json")
+	@ResponseBody
+	public String updateCart(@RequestBody List<Cart> cartList, HttpServletRequest httpRequest) {
+		logger.info("====> [API] save cart");
+		User sUser = (User) getVarFromSession(httpRequest, "user");
+		cartDao.save(cartList,sUser.getId());
+		return "success";
+	}
+	
+	
 }
