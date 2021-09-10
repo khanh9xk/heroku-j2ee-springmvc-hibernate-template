@@ -55,7 +55,7 @@ public class CartDao {
 			if(proTypeTraceList.contains(cartNew.getProductTypeId())){
 				throw new RuntimeException("[SAVE CART] Có lỗi sảy ra");
 			}
-			proTypeTraceList.add(cartNew.getProductTypeId())
+			proTypeTraceList.add(cartNew.getProductTypeId());
 		}
 		
 		
