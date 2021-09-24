@@ -23,23 +23,42 @@
 			<script src="${pageContext.request.contextPath}/resources/js/shop.js"></script>
 			<script>
 				$(document).ready(function () {
+
+
+
 					var url = "https://api.clashofclans.com/v1/clans/%238PGRQ0P/currentwar";
 
-					var xhr = new XMLHttpRequest();
-					xhr.open("GET", url);
+					// var xhr = new XMLHttpRequest();
+					// xhr.open("GET", url);
 
-					xhr.setRequestHeader("Accept", "application/json");
-					xhr.setRequestHeader( 'Access-Control-Allow-Origin', '*');
-					xhr.setRequestHeader("authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImM3YWE2ZGNlLTFmZjgtNDI2Yi1iMWRiLTAxMzhiMmM4NzM0YSIsImlhdCI6MTYzMjUwMzQ5NCwic3ViIjoiZGV2ZWxvcGVyL2FiY2EzY2ZiLTc0YzMtYjcwMC0xOGI4LTdjNWQxNTIxMzgwNCIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjIwNi4xODkuMjA1LjI1MSJdLCJ0eXBlIjoiY2xpZW50In1dfQ.yr_0Vl81RCJTtkCx4iota2KibsheDtn5MNJ9Z_GkeN6Fz4RRwIQ4QgcXw_r9YmS1mrUbMsvb7qVmmCIHInyUkg");
-					
-					xhr.onreadystatechange = function () {
-						if (xhr.readyState === 4) {
-							console.log(xhr.status);
-							console.log(xhr.responseText);
+					// xhr.setRequestHeader("Accept", "application/json");
+					// xhr.setRequestHeader( 'Access-Control-Allow-Origin', '*');
+					// xhr.setRequestHeader("authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImM3YWE2ZGNlLTFmZjgtNDI2Yi1iMWRiLTAxMzhiMmM4NzM0YSIsImlhdCI6MTYzMjUwMzQ5NCwic3ViIjoiZGV2ZWxvcGVyL2FiY2EzY2ZiLTc0YzMtYjcwMC0xOGI4LTdjNWQxNTIxMzgwNCIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjIwNi4xODkuMjA1LjI1MSJdLCJ0eXBlIjoiY2xpZW50In1dfQ.yr_0Vl81RCJTtkCx4iota2KibsheDtn5MNJ9Z_GkeN6Fz4RRwIQ4QgcXw_r9YmS1mrUbMsvb7qVmmCIHInyUkg");
+
+					// xhr.onreadystatechange = function () {
+					// 	if (xhr.readyState === 4) {
+					// 		console.log(xhr.status);
+					// 		console.log(xhr.responseText);
+					// 	}
+					// };
+
+					// xhr.send();
+					$.ajax({
+						type: "GET",
+						url: "https://api.clashofclans.com/v1/clans/%238PGRQ0P/currentwar",
+						headers: {
+							'Accept': 'application/json',
+							'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImM3YWE2ZGNlLTFmZjgtNDI2Yi1iMWRiLTAxMzhiMmM4NzM0YSIsImlhdCI6MTYzMjUwMzQ5NCwic3ViIjoiZGV2ZWxvcGVyL2FiY2EzY2ZiLTc0YzMtYjcwMC0xOGI4LTdjNWQxNTIxMzgwNCIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjIwNi4xODkuMjA1LjI1MSJdLCJ0eXBlIjoiY2xpZW50In1dfQ.yr_0Vl81RCJTtkCx4iota2KibsheDtn5MNJ9Z_GkeN6Fz4RRwIQ4QgcXw_r9YmS1mrUbMsvb7qVmmCIHInyUkg'
+						},
+						data: JSON.stringify(data),
+						success: function (data, status) {
+							console.log(data);
+						},
+						error: function (status) {
+							// error handler
+							alert(status);
 						}
-					};
-
-					xhr.send();
+					});
 
 				});
 			</script>
