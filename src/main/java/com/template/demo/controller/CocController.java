@@ -21,7 +21,7 @@ import java.util.List;
 public class CocController extends BaseController implements Serializable {
 
 	@RequestMapping(value = "/coc", method = RequestMethod.GET)
-	public String homeDetail(Model model, @PathVariable Integer id, @PathVariable Integer typeId) {
+	public String homeDetail(Model model) {
 		return "coc/index";
 	}
 
