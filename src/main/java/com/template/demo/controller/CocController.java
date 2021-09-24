@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Controller
 public class CocController extends BaseController implements Serializable {
-	@CrossOrigin(origins = "https://api.clashofclans.com")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/coc", method = RequestMethod.GET)
 	public String homeDetail(Model model) {
 		return "coc/index";
